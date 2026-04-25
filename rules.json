@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": { "extensionPath": "/blocked.html?from=youtube.com%2Fshorts" }
+    },
+    "condition": {
+      "urlFilter": "youtube.com/shorts",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": { "extensionPath": "/blocked.html?from=youtube.com%2Fplayables" }
+    },
+    "condition": {
+      "urlFilter": "youtube.com/playables",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": { "extensionPath": "/blocked.html?from=youtube.com%2Fhashtag%2Fshorts" }
+    },
+    "condition": {
+      "urlFilter": "youtube.com/hashtag/shorts",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": { "extensionPath": "/blocked.html?from=youtube.com%2F%40channel%2Fshorts" }
+    },
+    "condition": {
+      "regexFilter": "youtube\\.com/@[^/?#]+/shorts",
+      "resourceTypes": ["main_frame"],
+      "isUrlFilterCaseSensitive": false
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": { "extensionPath": "/blocked.html?from=google.com%20(Shorts%20search)" }
+    },
+    "condition": {
+      "regexFilter": "google\\.com/search.*udm=39",
+      "resourceTypes": ["main_frame"],
+      "isUrlFilterCaseSensitive": false
+    }
+  }
+]

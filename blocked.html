@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Website Blocked</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: #e8e8ed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow:
+        0 0 0 0.5px rgba(0, 0, 0, 0.12),
+        0 4px 16px rgba(0, 0, 0, 0.10),
+        0 20px 48px rgba(0, 0, 0, 0.08);
+      width: 400px;
+      overflow: hidden;
+    }
+
+    .dialog-body {
+      padding: 32px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .icon-wrap {
+      width: 60px;
+      height: 60px;
+      background: #ff3b30;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+    }
+
+    .icon-wrap svg {
+      width: 30px;
+      height: 30px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    h1 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1d1d1f;
+      letter-spacing: -0.2px;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #3c3c43;
+      margin-bottom: 12px;
+    }
+
+    .url-pill {
+      background: #f5f5f7;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+      color: #636366;
+      word-break: break-all;
+      margin-bottom: 14px;
+      max-width: 100%;
+    }
+
+    .sub {
+      font-size: 12px;
+      color: #8e8e93;
+      line-height: 1.5;
+    }
+
+    .button-row {
+      display: flex;
+      border-top: 0.5px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 0;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      color: #007aff;
+      font-weight: 400;
+      transition: background 80ms;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn + .btn {
+      border-left: 0.5px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .btn:hover  { background: rgba(0, 122, 255, 0.05); }
+    .btn:active { background: rgba(0, 122, 255, 0.12); }
+
+    .btn.primary { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="dialog">
+    <div class="dialog-body">
+      <div class="icon-wrap">
+        <!-- shield with X -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V6L12 2z"/>
+          <line x1="9" y1="9" x2="15" y2="15"/>
+          <line x1="15" y1="9" x2="9" y2="15"/>
+        </svg>
+      </div>
+
+      <h1>Website Blocked</h1>
+      <p class="message">That website is blocked by Mark Day School's content filter.</p>
+
+      <div class="url-pill" id="blocked-url">youtube.com/shorts</div>
+
+      <p class="sub">
+        This content is restricted under Mark Day School's Acceptable Use Policy.
+        Contact your teacher or IT administrator if you believe this is an error.
+      </p>
+    </div>
+
+    <div class="button-row">
+      <button class="btn" onclick="goBack()">Close</button>
+      <button class="btn primary" onclick="goBack()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const from = params.get("from");
+    if (from) {
+      document.getElementById("blocked-url").textContent = decodeURIComponent(from);
+    }
+
+    function goBack() {
+      if (history.length > 1) {
+        history.back();
+      } else {
+        location.href = "https://www.youtube.com/";
+      }
+    }
+  </script>
+</body>
+</html>
